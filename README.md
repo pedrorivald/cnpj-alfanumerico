@@ -1,6 +1,6 @@
 # 🏢 CNPJ Alfanumérico Gerador e Validador
 
-Uma aplicação web moderna desenvolvida em Angular para gerar e validar CNPJs alfanuméricos, seguindo as especificações técnicas da Receita Federal do Brasil.
+Uma aplicação desenvolvida em Angular para gerar e validar CNPJs alfanuméricos, seguindo as especificações técnicas da Receita Federal do Brasil.
 
 ![Angular](https://img.shields.io/badge/Angular-20.1.0-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
