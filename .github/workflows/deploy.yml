@@ -28,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Build for GitHub Pages
-        run: npm run build --prerender --base-href /cnpj-alfanumerico/
+        run: npm run build:gh
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
