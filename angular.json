@@ -30,7 +30,11 @@
               "src/styles.scss"
             ],
             "server": "src/main.server.ts",
-            "outputMode": "server",
+            "outputMode": "static",
+            "prerender": {
+              "discoverRoutes": true
+            },
+            "outputPath": "dist/cnpj-alfanumerico",
             "ssr": {
               "entry": "src/server.ts"
             }

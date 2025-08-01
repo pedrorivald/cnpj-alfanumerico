@@ -6,6 +6,60 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+:root {
+  --primary-color: #1565c0;
+  --primary-light: #e3f2fd;
+  --primary-lighter: #bbdefb;
+  
+  --secondary-color: #9c27b0;
+  --secondary-light: #f3e5f5;
+  
+  --success-color: #4caf50;
+  --success-light: #e8f5e8;
+  --success-dark: #2e7d32;
+  --success-border: #c8e6c9;
+  
+  --error-color: #f44336;
+  --error-dark: #c62828;
+  --error-darker: #d32f2f;
+  
+  --warning-color: #ff9800;
+  --warning-light: #fff3e0;
+  --warning-lighter: #ffecb3;
+  --warning-dark: #e65100;
+  --warning-accent: #ffcc02;
+  
+  --info-light: #e1f5fe;
+  --info-dark: #01579b;
+  --info-medium: #0277bd;
+  --info-variant: #42a5f5;
+  --info-variant-light: #64b5f6;
+  --info-border: #0288d1;
+  
+  --text-primary: #333;
+  --text-secondary: #555;
+  --text-tertiary: #666;
+  --text-light: #444;
+  
+  --background-primary: #ffffff;
+  --background-secondary: #f8f9fa;
+  --background-light: #fafafa;
+  --background-neutral: #f5f5f5;
+  
+  --border-light: rgba(255, 255, 255, 0.2);
+  --border-primary: rgba(25, 118, 210, 0.1);
+  
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-primary: rgba(25, 118, 210, 0.15);
+  --shadow-primary-medium: rgba(25, 118, 210, 0.2);
+  --shadow-primary-dark: rgba(25, 118, 210, 0.3);
+  
+  --backdrop-overlay: rgba(255, 255, 255, 0.8);
+  --backdrop-overlay-light: rgba(255, 255, 255, 0.1);
+  --backdrop-overlay-medium: rgba(255, 255, 255, 0.2);
+}
+
 html {
   @include mat.theme((
     color: (

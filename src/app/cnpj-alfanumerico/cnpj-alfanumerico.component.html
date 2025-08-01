@@ -1,0 +1,89 @@
+<div class="cnpj-container">
+  <h1>CNPJ Alfanumérico - Gerador e Validador</h1>
+  
+  <div class="cards-container">
+    <div class="card generator-card">
+      <div class="card-header">
+        <mat-icon class="card-icon">add_circle</mat-icon>
+        <h2>Gerar CNPJ</h2>
+      </div>
+      <div class="card-content">
+        <p class="card-description">
+          Gere um CNPJ alfanumérico válido seguindo as novas regras da Receita Federal.
+        </p>
+        
+        <div class="generate-section">
+          <button 
+            mat-raised-button 
+            color="primary" 
+            (click)="generateCNPJ()"
+            class="action-button">
+            <mat-icon>refresh</mat-icon>
+            Gerar CNPJ Alfanumérico
+          </button>
+        </div>
+
+        @if (generatedCNPJ()) {
+          <div class="result-section">
+            <mat-form-field appearance="outline" class="cnpj-field">
+              <mat-label>CNPJ Gerado</mat-label>
+              <input 
+                matInput 
+                [value]="displayedCNPJ()" 
+                readonly>
+              <button 
+                matSuffix 
+                mat-icon-button 
+                (click)="copyCNPJ()"
+                matTooltip="Copiar CNPJ">
+                <mat-icon>content_copy</mat-icon>
+              </button>
+            </mat-form-field>
+            
+            <div class="checkbox-section">
+              <mat-checkbox 
+                [checked]="includeMask()" 
+                (change)="toggleMask($event.checked)">
+                Copiar com pontuação?
+              </mat-checkbox>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="card validator-card">
+      <div class="card-header">
+        <mat-icon class="card-icon">verified</mat-icon>
+        <h2>Validar CNPJ</h2>
+      </div>
+      <div class="card-content">
+        <p class="card-description">
+          Valide um CNPJ numérico ou alfanumérico para verificar se está correto.
+        </p>
+        
+        <div class="validate-section">
+          <mat-form-field appearance="outline" class="validate-field">
+            <mat-label>Digite o CNPJ para validar</mat-label>
+            <input 
+              matInput 
+              [value]="cnpjToValidate()" 
+              (input)="onCNPJInputChange($event)"
+              placeholder="Ex: 12.345.678/0001-95 ou AB.CDE.FGH/123I-45"
+              maxlength="18">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+          
+          @if (validationResult() !== null) {
+            <div class="validation-feedback" [class.valid]="validationResult()" [class.invalid]="!validationResult()">
+              <mat-icon>{{ validationResult() ? 'check_circle' : 'error' }}</mat-icon>
+              <span>
+                {{ validationResult() ? 'CNPJ válido' : 'CNPJ inválido' }}
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
