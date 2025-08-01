@@ -11,7 +11,7 @@ Uma aplicação web moderna desenvolvida em Angular para gerar e validar CNPJs a
 
 Este projeto é uma ferramenta web que permite a geração e validação de CNPJs no formato alfanumérico, uma modalidade que inclui letras e números conforme as diretrizes da Receita Federal.
 
-![Demo do Sistema](readme.gif)
+![Demo do Sistema](https://pedrorivald.github.io/cnpj-alfanumerico/readme.gif)
 
 ### ✨ Funcionalidades
 
