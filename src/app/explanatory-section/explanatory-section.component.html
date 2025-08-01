@@ -1,104 +1,102 @@
-<div class="explanatory-container">
-  <article class="explanatory-section">
-    <header>
-      <p class="lead">
-        Com a crescente demanda por novos registros, a Receita Federal anunciou a implementação de um novo formato de CNPJ, 
-        o <strong>CNPJ Alfanumérico</strong>. Essa mudança é crucial para garantir a continuidade da
-        identificação única das empresas no Brasil. Para a comunidade de tecnologia, essa alteração exige uma preparação 
-        e adaptação dos sistemas atuais.
-      </p>
-      <p>A seguir, um resumo técnico sobre o que muda e como sua empresa deve se preparar.</p>
-    </header>
+<article class="explanatory-section">
+  <header>
+    <p class="lead">
+      Com a crescente demanda por novos registros, a Receita Federal anunciou a implementação de um novo formato de CNPJ, 
+      o <strong>CNPJ Alfanumérico</strong>. Essa mudança é crucial para garantir a continuidade da
+      identificação única das empresas no Brasil. Para a comunidade de tecnologia, essa alteração exige uma preparação 
+      e adaptação dos sistemas atuais.
+    </p>
+    <p>A seguir, um resumo técnico sobre o que muda e como sua empresa deve se preparar.</p>
+  </header>
 
-    <section class="content-section">
-      <h3>O que é o CNPJ Alfanumérico?</h3>
+  <section class="content-section">
+    <h3>O que é o CNPJ Alfanumérico?</h3>
+    <p>
+      O <strong>CNPJ alfanumérico</strong> é uma nova estrutura para o Cadastro Nacional da Pessoa Jurídica que combinará 
+      letras (de A a Z) e números (de 0 a 9). A mudança visa ampliar a quantidade de combinações possíveis e evitar que o 
+      modelo puramente numérico esgote sua capacidade.
+    </p>
+
+    <h4>Pontos-chave:</h4>
+    <ul class="key-points">
+      <li><strong>Início:</strong> A implementação começará a partir de <time datetime="2026-07">Julho de 2026</time>.</li>
+      <li><strong>Transição:</strong> A adoção será progressiva, seguindo um calendário a ser definido pela Receita Federal.</li>
+      <li><strong>CNPJs Atuais:</strong> Empresas que já possuem CNPJ não terão seu número alterado. O formato numérico continuará válido.</li>
+      <li><strong>Coexistência:</strong> Os dois formatos (numérico e alfanumérico) coexistirão e serão válidos em todos os processos.</li>
+      <li><strong>Novas Filiais:</strong> Filiais de empresas já existentes poderão receber um número de ordem no formato alfanumérico.</li>
+      <li><strong>Aleatoriedade:</strong> As letras no novo CNPJ serão aleatórias, sem qualquer relação com a UF, natureza jurídica ou outro atributo da empresa.</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h3>Impacto Técnico e Migração de Sistemas</h3>
+    <p>
+      A principal implicação para empresas de tecnologia é a necessidade de atualizar seus sistemas para que sejam 
+      capazes de processar, validar e armazenar ambos os formatos de CNPJ.
+    </p>
+
+    <h4>1. Estrutura do Novo Formato:</h4>
+    <p>
+      O CNPJ manterá seus 14 dígitos, mas as posições poderão ser preenchidas por letras ou números, seguindo o formato: 
+      <code class="cnpj-format">SS.SSS.SSS/SSSS-DV</code>.
+      Onde <code>S</code> representa um caractere alfanumérico (letra ou número) e <code>DV</code> representa o dígito verificador.
+    </p>
+
+    <h4>2. Cálculo do Dígito Verificador (DV):</h4>
+    <p>O cálculo do DV continuará utilizando o algoritmo do <strong>Módulo 11</strong>, mas com uma adaptação:</p>
+    <blockquote>
+      Para realizar o cálculo numérico do algoritmo, cada caractere do CNPJ será convertido para seu valor decimal 
+      correspondente na tabela ASCII.
+    </blockquote>
+    <p>
+      A Receita Federal disponibilizou rotinas de cálculo nas linguagens de programação mais comuns para auxiliar 
+      os desenvolvedores nessa adaptação: <a href="https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/documentos-tecnicos/cnpj" target="_blank">Documentação Oficial</a>.
+    </p>
+
+    <div class="example-box">
+      <h5>Exemplo de conversão para cálculo:</h5>
       <p>
-        O <strong>CNPJ alfanumérico</strong> é uma nova estrutura para o Cadastro Nacional da Pessoa Jurídica que combinará 
-        letras (de A a Z) e números (de 0 a 9). A mudança visa ampliar a quantidade de combinações possíveis e evitar que o 
-        modelo puramente numérico esgote sua capacidade.
+        A letra "A" tem valor decimal 65 na tabela ASCII. Para o cálculo, utiliza-se um valor ajustado. 
+        No exemplo do documento, subtrai-se 48, resultando em 17 para a letra "A".
       </p>
+    </div>
+  </section>
 
-      <h4>Pontos-chave:</h4>
-      <ul class="key-points">
-        <li><strong>Início:</strong> A implementação começará a partir de <time datetime="2026-07">Julho de 2026</time>.</li>
-        <li><strong>Transição:</strong> A adoção será progressiva, seguindo um calendário a ser definido pela Receita Federal.</li>
-        <li><strong>CNPJs Atuais:</strong> Empresas que já possuem CNPJ não terão seu número alterado. O formato numérico continuará válido.</li>
-        <li><strong>Coexistência:</strong> Os dois formatos (numérico e alfanumérico) coexistirão e serão válidos em todos os processos.</li>
-        <li><strong>Novas Filiais:</strong> Filiais de empresas já existentes poderão receber um número de ordem no formato alfanumérico.</li>
-        <li><strong>Aleatoriedade:</strong> As letras no novo CNPJ serão aleatórias, sem qualquer relação com a UF, natureza jurídica ou outro atributo da empresa.</li>
-      </ul>
-    </section>
+  <section class="content-section">
+    <h3>Ações Necessárias para Empresas de TI</h3>
+    <ol class="action-list">
+      <li>
+        <strong>Revisão de Validações:</strong> Todos os algoritmos de validação de CNPJ devem ser atualizados para 
+        incluir a lógica do Módulo 11 com caracteres alfanuméricos.
+      </li>
+      <li>
+        <strong>Ajuste de Campos e Bancos de Dados:</strong> Campos de formulários, colunas em bancos de dados e 
+        variáveis em código que hoje estão definidos como numérico ou int para armazenar o CNPJ deverão ser alterados 
+        para texto ou varchar para suportar as letras.
+      </li>
+      <li>
+        <strong>Atualização de APIs e Integrações:</strong> Todos os endpoints e integrações com sistemas de parceiros 
+        (clientes, fornecedores, instituições financeiras) devem ser revisados para garantir a compatibilidade com o novo formato.
+      </li>
+      <li>
+        <strong>Adaptação de Emissão de Documentos:</strong> Sistemas de emissão de notas fiscais, documentos contábeis 
+        e fiscais e outras obrigações acessórias precisam ser ajustados para ler e registrar o CNPJ alfanumérico.
+      </li>
+    </ol>
+  </section>
 
-    <section class="content-section">
-      <h3>Impacto Técnico e Migração de Sistemas</h3>
-      <p>
-        A principal implicação para empresas de tecnologia é a necessidade de atualizar seus sistemas para que sejam 
-        capazes de processar, validar e armazenar ambos os formatos de CNPJ.
-      </p>
-
-      <h4>1. Estrutura do Novo Formato:</h4>
-      <p>
-        O CNPJ manterá seus 14 dígitos, mas as posições poderão ser preenchidas por letras ou números, seguindo o formato: 
-        <code class="cnpj-format">SS.SSS.SSS/SSSS-DV</code>.
-        Onde <code>S</code> representa um caractere alfanumérico (letra ou número) e <code>DV</code> representa o dígito verificador.
-      </p>
-
-      <h4>2. Cálculo do Dígito Verificador (DV):</h4>
-      <p>O cálculo do DV continuará utilizando o algoritmo do <strong>Módulo 11</strong>, mas com uma adaptação:</p>
-      <blockquote>
-        Para realizar o cálculo numérico do algoritmo, cada caractere do CNPJ será convertido para seu valor decimal 
-        correspondente na tabela ASCII.
-      </blockquote>
-      <p>
-        A Receita Federal disponibilizou rotinas de cálculo nas linguagens de programação mais comuns para auxiliar 
-        os desenvolvedores nessa adaptação: <a href="https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/documentos-tecnicos/cnpj" target="_blank">Documentação Oficial</a>.
-      </p>
-
-      <div class="example-box">
-        <h5>Exemplo de conversão para cálculo:</h5>
-        <p>
-          A letra "A" tem valor decimal 65 na tabela ASCII. Para o cálculo, utiliza-se um valor ajustado. 
-          No exemplo do documento, subtrai-se 48, resultando em 17 para a letra "A".
-        </p>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <h3>Ações Necessárias para Empresas de TI</h3>
-      <ol class="action-list">
-        <li>
-          <strong>Revisão de Validações:</strong> Todos os algoritmos de validação de CNPJ devem ser atualizados para 
-          incluir a lógica do Módulo 11 com caracteres alfanuméricos.
-        </li>
-        <li>
-          <strong>Ajuste de Campos e Bancos de Dados:</strong> Campos de formulários, colunas em bancos de dados e 
-          variáveis em código que hoje estão definidos como numérico ou int para armazenar o CNPJ deverão ser alterados 
-          para texto ou varchar para suportar as letras.
-        </li>
-        <li>
-          <strong>Atualização de APIs e Integrações:</strong> Todos os endpoints e integrações com sistemas de parceiros 
-          (clientes, fornecedores, instituições financeiras) devem ser revisados para garantir a compatibilidade com o novo formato.
-        </li>
-        <li>
-          <strong>Adaptação de Emissão de Documentos:</strong> Sistemas de emissão de notas fiscais, documentos contábeis 
-          e fiscais e outras obrigações acessórias precisam ser ajustados para ler e registrar o CNPJ alfanumérico.
-        </li>
-      </ol>
-    </section>
-
-    <section class="content-section warning-section">
-      <h3>Consequências da Não Adaptação</h3>
-      <p>Empresas que não atualizarem seus sistemas a tempo poderão enfrentar sérios problemas operacionais, como:</p>
-      <ul class="warning-list">
-        <li>Dificuldades ou impossibilidade de emitir notas fiscais.</li>
-        <li>Falhas na comunicação com sistemas de fornecedores e clientes.</li>
-        <li>Atrasos em processos administrativos e fiscais, impactando negativamente as operações.</li>
-      </ul>
-      <p class="conclusion">
-        Ainda que a mudança não afete os CNPJs já existentes, a partir de <time datetime="2026-07">julho de 2026</time>, 
-        qualquer novo parceiro comercial ou filial poderá ter um CNPJ alfanumérico, tornando a adaptação dos sistemas 
-        uma medida <strong>indispensável e urgente</strong> para o setor de tecnologia.
-      </p>
-    </section>
-  </article>
-</div>
+  <section class="content-section warning-section">
+    <h3>Consequências da Não Adaptação</h3>
+    <p>Empresas que não atualizarem seus sistemas a tempo poderão enfrentar sérios problemas operacionais, como:</p>
+    <ul class="warning-list">
+      <li>Dificuldades ou impossibilidade de emitir notas fiscais.</li>
+      <li>Falhas na comunicação com sistemas de fornecedores e clientes.</li>
+      <li>Atrasos em processos administrativos e fiscais, impactando negativamente as operações.</li>
+    </ul>
+    <p class="conclusion">
+      Ainda que a mudança não afete os CNPJs já existentes, a partir de <time datetime="2026-07">julho de 2026</time>, 
+      qualquer novo parceiro comercial ou filial poderá ter um CNPJ alfanumérico, tornando a adaptação dos sistemas 
+      uma medida <strong>indispensável e urgente</strong> para o setor de tecnologia.
+    </p>
+  </section>
+</article>

@@ -16,7 +16,6 @@ h1 {
   text-shadow: 0 2px 4px var(--shadow-primary-medium);
 }
 
-// Container dos cards
 .cards-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -50,7 +49,6 @@ h1 {
   }
 }
 
-// Header dos cards
 .card-header {
   display: flex;
   align-items: center;
@@ -74,7 +72,6 @@ h1 {
   }
 }
 
-// Conteúdo dos cards
 .card-content {
   .card-description {
     color: var(--text-tertiary);
@@ -219,6 +216,7 @@ h1 {
   h1 {
     font-size: 2rem;
     margin-bottom: 2rem;
+    line-height: normal;
   }
 
   .cards-container {
